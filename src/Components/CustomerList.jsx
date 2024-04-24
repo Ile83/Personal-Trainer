@@ -74,7 +74,7 @@ export default function CustomerList() {
    cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
   },
       {field: '_links.self.href', sortable: false, filter: false, 
-        headerName: '', 
+        headerName: 'Delete', // Header name for the column does not appear in the grid, remove when not needed, when you have the delete button showing
        cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>}
       ]);
 

@@ -21,7 +21,7 @@ export default function TrainingList() {
 
         fetch('https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings') // Fetch data from the REST API
         .then(response => response.json())
-        .then(date => date.map((training) => ({...training, date: dayjs(training.date).format('DD/MM/YYYY')}))) // Convert the date string to a Date object
+        .then(date => date.map((training) => ({...training, date: dayjs(training.date).format('DD/MM/YYYY')}))) // Convert the date string to a Date object //Lähde: javakurssin map esimerkki, iteroitu koodiriviä github copilotilla. Koodi siis muokkaa treeenien päivämäärän oikeaan muotoon ja tallentaa sen date muuttujaan training objektin sisälle. itseasiassa tallennus tapahtuu tuossa riviä alempana.
         .then(data => setTrainings(data)) // Set the state variable to the data fetched from the REST API
         .catch(error => console.error(error))
         
