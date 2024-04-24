@@ -17,7 +17,7 @@ export default function Editcus(props) {
 
     const handleClickOpen = () => {
         //console.log(props.customer);
-        setCustomer({firstnamee: props.customer.firstname, lastname: props.customer.lastname, streetaddress: props.customer.streetaddress, postcode: props.customer.postcode, city: props.customer.city, email: props.customer.email, phone: props.customer.phone});
+        setCustomer({firstname: props.customer.firstname, lastname: props.customer.lastname, streetaddress: props.customer.streetaddress, postcode: props.customer.postcode, city: props.customer.city, email: props.customer.email, phone: props.customer.phone});
         setOpen(true);
     };
 
