@@ -11,7 +11,7 @@ import { DialogTitle } from "@mui/material";
 export default function AddCustomer(props) {
 
     const [open, setOpen] = React.useState(false); // State variable for opening and closing the dialog
-    const [customer, setCustomers] = React.useState({ // State variable for holding the customer data
+    const [customer, setCustomer] = React.useState({ // State variable for holding the customer data
         firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: ''
     });
 
@@ -24,12 +24,12 @@ export default function AddCustomer(props) {
     };
 
     const handleInputChange = (event) => { // Function to handle input changes
-        setCar({...car, [event.target.name]: event.target.value});
+        setCustomer({...customer, [event.target.name]: event.target.value});
 
     }
 
     const addCustomer = () => { // Function to add a new customer
-        props.saveCar(car)
+        props.saveCustomer(customer)
         handleClose();
     }
 
@@ -53,7 +53,7 @@ export default function AddCustomer(props) {
               name="firstname"
                value={customer.firstname}
               onChange={e => handleInputChange(e)}
-              label="brand"
+              label="firstname"
               fullWidth
             />
             <TextField
@@ -62,7 +62,7 @@ export default function AddCustomer(props) {
               name="lastname"
             value={customer.lastname}
               onChange={e => handleInputChange(e)}
-              label="model"
+              label="lastname"
               fullWidth
             />
             <TextField
@@ -71,7 +71,7 @@ export default function AddCustomer(props) {
               name="streetaddress"
             value={customer.streetaddress}
               onChange={e => handleInputChange(e)}
-              label="color"
+              label="streetaddress"
               fullWidth
             />
                      <TextField
@@ -80,7 +80,7 @@ export default function AddCustomer(props) {
             name="postcode"
             value={customer.postcode}
             onChange={e => handleInputChange(e)}
-            label="fuel"
+            label="postcode"
             fullWidth
             />
             <TextField
@@ -89,7 +89,7 @@ export default function AddCustomer(props) {
             name="city"
             value={customer.city}
             onChange={e => handleInputChange(e)}
-            label="year"
+            label="city"
             fullWidth
             />
             <TextField
@@ -98,7 +98,7 @@ export default function AddCustomer(props) {
             name="email"
            value={customer.email}
             onChange={e => handleInputChange(e)}
-            label="price"
+            label="email"
             fullWidth
             />
         <TextField
@@ -107,7 +107,7 @@ export default function AddCustomer(props) {
             name="phone"
            value={customer.phone}
             onChange={e => handleInputChange(e)}
-            label="price"
+            label="phone"
             fullWidth
             />
             </DialogContent>

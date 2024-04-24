@@ -70,12 +70,12 @@ export default function CustomerList() {
         {field: 'city', filter: true},
         {field: 'email', filter: true},
         {field: 'phone', filter: true},
- //       {field: 'edit', sortable: false, filter: false,
-  //  cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
-  //  },
- //       {field: '_links.self.href', sortable: false, filter: false, 
-   //     headerName: '', 
-     //   cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>}
+     {field: 'edit', sortable: false, filter: false,
+   cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
+  },
+      {field: '_links.self.href', sortable: false, filter: false, 
+        headerName: '', 
+       cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>}
       ]);
 
      
@@ -84,7 +84,7 @@ export default function CustomerList() {
     return (
 
     <div className="ag-theme-material" style={{width: 1600, height: 1800}}>
-
+        <AddCustomer saveCustomer={saveCustomer} />
         <AgGridReact 
         rowData={customers}
         columnDefs={columnDefs}

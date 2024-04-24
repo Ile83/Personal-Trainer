@@ -12,19 +12,19 @@ import dayjs from 'dayjs';
 export default function TrainingList() {
 
     const [trainings, setTrainings] = useState([]); // State variable for holding customers
-    const dayjs = require('dayjs');
+   // const dayjs = require('dayjs');
 
 
     useEffect(() => fetchData(), []);
 
     const fetchData = () => {
 
-        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings') // Fetch data from the REST API vaihda osoite
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings') // Fetch data from the REST API
         .then(response => response.json())
-        .then(data => dayjs(data.date).toDate()) // Convert date to a readable format, en tiedä vielä toimiiko
+        .then(date => date.map((training) => ({...training, date: dayjs(training.date).format('DD/MM/YYYY')}))) // Convert the date string to a Date object
         .then(data => setTrainings(data)) // Set the state variable to the data fetched from the REST API
         .catch(error => console.error(error))
-
+        
     }
     
 

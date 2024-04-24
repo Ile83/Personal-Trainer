@@ -16,7 +16,7 @@ export default function Editcus(props) {
     });
 
     const handleClickOpen = () => {
-        //console.log(props.car);
+        //console.log(props.customer);
         setCustomer({firstnamee: props.customer.firstname, lastname: props.customer.lastname, streetaddress: props.customer.streetaddress, postcode: props.customer.postcode, city: props.customer.city, email: props.customer.email, phone: props.customer.phone});
         setOpen(true);
     };
@@ -53,18 +53,18 @@ export default function Editcus(props) {
               required
               margin="dense"
               name="firstname"
-               value={customer.firstname}
+              value={customer.firstname}
               onChange={e => handleInputChange(e)}
-              label="brand"
+              label="firstname"
               fullWidth
             />
             <TextField
               required
               margin="dense"
               name="lastname"
-            value={customer.lastname}
+              value={customer.lastname}
               onChange={e => handleInputChange(e)}
-              label="model"
+              label="lastname"
               fullWidth
             />
             <TextField
@@ -73,7 +73,7 @@ export default function Editcus(props) {
               name="streetaddress"
             value={customer.streetaddress}
               onChange={e => handleInputChange(e)}
-              label="color"
+              label="streetaddress"
               fullWidth
             />
                      <TextField
@@ -82,7 +82,7 @@ export default function Editcus(props) {
             name="postcode"
             value={customer.postcode}
             onChange={e => handleInputChange(e)}
-            label="fuel"
+            label="postcode"
             fullWidth
             />
             <TextField
@@ -91,7 +91,7 @@ export default function Editcus(props) {
             name="city"
             value={customer.city}
             onChange={e => handleInputChange(e)}
-            label="year"
+            label="city"
             fullWidth
             />
             <TextField
@@ -100,7 +100,7 @@ export default function Editcus(props) {
             name="email"
            value={customer.email}
             onChange={e => handleInputChange(e)}
-            label="price"
+            label="email"
             fullWidth
             />
         <TextField
@@ -109,7 +109,7 @@ export default function Editcus(props) {
             name="phone"
            value={customer.phone}
             onChange={e => handleInputChange(e)}
-            label="price"
+            label="phone"
             fullWidth
             />
             </DialogContent>
