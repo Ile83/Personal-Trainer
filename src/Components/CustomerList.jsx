@@ -97,8 +97,9 @@ export default function CustomerList() {
     headerName: 'Customers Trainings',
     cellRenderer: ({ value }) => <Button color="primary" size="small" onClick={() => console.log(value)}>Trainings</Button>
     },
-    {field: '_links.self.href', sortable: false, filter: false,
-    cellRenderer: ({ value }) => <AddTraining trainingid={( value )} saveTraining={saveTraining} />
+    {field: '_links.customer.href', sortable: false, filter: false,
+    headerName: 'Add Training',
+    cellRenderer: ({ data }) => <AddTraining training={data} saveTraining={saveTraining} />
    },
       ]);
 

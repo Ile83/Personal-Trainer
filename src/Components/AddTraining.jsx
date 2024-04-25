@@ -30,6 +30,7 @@ export default function AddTraining(props) {
 
     const addTraining = () => { // Function to add a new customer
         props.saveTraining(training)
+        console.log(training) // This is for developer only
         handleClose();
     }
 
@@ -52,7 +53,7 @@ export default function AddTraining(props) {
                 required
                 margin="dense"
                 name="firstname"
-                 value={props.firstname}
+                 value={props.training.firstname}
                 onChange={e => handleInputChange(e)}
                 type="text"
                 fullWidth
@@ -62,7 +63,7 @@ export default function AddTraining(props) {
                 required
                 margin="dense"
                 name="lastname"
-                 value={props.lastname}
+                 value={props.training.lastname}
                 onChange={e => handleInputChange(e)}
                 type="text"
                 fullWidth
@@ -103,7 +104,7 @@ export default function AddTraining(props) {
             required
             margin="dense"
             name="customer"
-            value={props.trainingid} // This is the customer id for developer only do not change
+            value={props.training._links.customer.href} // This is the customer id for developer only do not change
             onChange={e => handleInputChange(e)}
             label="add training to this customer id do not touch this field dev only"
             fullWidth
