@@ -1,11 +1,12 @@
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
+//import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
+import AddTraining from './AddTraining';
 
 
 export default function CustomerList() {
@@ -62,6 +63,21 @@ export default function CustomerList() {
         .catch(error => console.error(error))
     }
 
+    const saveTraining = (training) => { // Function to add a new Training to a customer
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(training)
+        })
+        .then(() => fetchData())
+        .catch(error => console.error(error))
+    }
+
+
+
+
     const [columnDefs, setColumnDefs] = useState([ // Column definitions for the grid
         {field: 'firstname', filter: true},
         {field: 'lastname', filter: true},
@@ -74,8 +90,16 @@ export default function CustomerList() {
    cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
   },
       {field: '_links.self.href', sortable: false, filter: false, 
-        headerName: 'Delete', // Header name for the column does not appear in the grid, remove when not needed, when you have the delete button showing
-       cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>}
+        headerName: '',
+       cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>
+    },
+    {field: '_links.trainings.href', sortable: false, filter: false,
+    headerName: 'Customers Trainings',
+    cellRenderer: ({ value }) => <Button color="primary" size="small" onClick={() => console.log(value)}>Trainings</Button>
+    },
+    {field: '_links.self.href', sortable: false, filter: false,
+    cellRenderer: ({ value }) => <AddTraining trainingid={( value )} saveTraining={saveTraining} />
+   },
       ]);
 
      
@@ -83,7 +107,7 @@ export default function CustomerList() {
 
     return (
 
-    <div className="ag-theme-material" style={{width: 1600, height: 1800}}>
+    <div className="ag-theme-material" style={{width: 1400, height: 800}}>
         <AddCustomer saveCustomer={saveCustomer} />
         <AgGridReact 
         rowData={customers}

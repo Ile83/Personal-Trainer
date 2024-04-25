@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, useThemeProps } from "@mui/material";
+import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Dialog } from "@mui/material";
 import { DialogActions } from "@mui/material";
@@ -8,7 +8,7 @@ import { DialogTitle } from "@mui/material";
 
 
 
-export default function Editcus(props) {
+export default function EditCustomer(props) {
 
     const [open, setOpen] = React.useState(false);
     const [customer, setCustomer] = React.useState({ // State variable for holding the customer data
@@ -21,16 +21,16 @@ export default function Editcus(props) {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = () => { // Function to close the dialog
         setOpen(false);
     };
 
     const handleInputChange = (event) => {
-        setCustomer({...customer, [event.target.name]: event.target.value});
+        setCustomer({...customer, [event.target.name]: event.target.value}); // Update the customer object
 
     }
 
-    const updateCustomer = () => {
+    const updateCustomer = () => { // Function to update a customer
         props.updateCustomer(customer, props.customer._links.customer.href);
         handleClose();
     }
@@ -114,10 +114,10 @@ export default function Editcus(props) {
             />
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleClose} color="primary"> 
                 Cancel
             </Button>
-            <Button onClick={updateCustomer} color="primary">
+            <Button onClick={updateCustomer} color="primary"> 
                 Save
             </Button>
           </DialogActions>

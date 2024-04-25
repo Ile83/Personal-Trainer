@@ -1,5 +1,5 @@
 import React from "react";
-import { Button} from "@mui/material";
+import { Button, duration} from "@mui/material";
 import { TextField } from "@mui/material";
 import { Dialog } from "@mui/material";
 import { DialogActions } from "@mui/material";
@@ -8,11 +8,11 @@ import { DialogTitle } from "@mui/material";
 
 
 
-export default function AddCustomer(props) {
+export default function AddTraining(props) {
 
     const [open, setOpen] = React.useState(false); // State variable for opening and closing the dialog
-    const [customer, setCustomer] = React.useState({ // State variable for holding the customer data
-        firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: ''
+    const [training, setTraining] = React.useState({ // State variable for holding the customer data
+        date: '', activity: '', duration: '', customer: ''
     });
 
     const handleClickOpen = () => { // Function to open the dialog
@@ -24,90 +24,88 @@ export default function AddCustomer(props) {
     };
 
     const handleInputChange = (event) => { // Function to handle input changes
-        setCustomer({...customer, [event.target.name]: event.target.value});
+        setTraining({...training, [event.target.name]: event.target.value});
 
     }
 
-    const addCustomer = () => { // Function to add a new customer
-        props.saveCustomer(customer)
+    const addTraining = () => { // Function to add a new customer
+        props.saveTraining(training)
         handleClose();
     }
+
 
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
         <Button style= {{margin: 10}} variant="outlined" color="primary" onClick={handleClickOpen}> 
-          Add customer
+          Add Traingin to customer
         </Button>
         <Dialog
             open={open}
             onClose={handleClose}
             aria-labelledby="form-dialog-title">
 
-          <DialogTitle id="form-dialog-title">New Customer</DialogTitle>
+          <DialogTitle id="form-dialog-title">Add training</DialogTitle>
             <DialogContent>
+            <TextField
+                autoFocus
+                required
+                margin="dense"
+                name="firstname"
+                 value={props.firstname}
+                onChange={e => handleInputChange(e)}
+                type="text"
+                fullWidth
+            />
+              <TextField
+                autoFocus
+                required
+                margin="dense"
+                name="lastname"
+                 value={props.lastname}
+                onChange={e => handleInputChange(e)}
+                type="text"
+                fullWidth
+            />
+
             <TextField
               autoFocus
               required
               margin="dense"
-              name="firstname"
-               value={customer.firstname}
+              name="date"
+               value={training.date}
               onChange={e => handleInputChange(e)}
-              label="firstname"
+
+              type="date"
               fullWidth
             />
             <TextField
               required
               margin="dense"
-              name="lastname"
-            value={customer.lastname}
+              name="activity"
+            value={training.activity}
               onChange={e => handleInputChange(e)}
-              label="lastname"
+              label="activity"
+              type="text"
               fullWidth
             />
             <TextField
               required
               margin="dense"
-              name="streetaddress"
-            value={customer.streetaddress}
+              name="duration"
+            value={training.duration}
               onChange={e => handleInputChange(e)}
-              label="streetaddress"
+              label="duration"
+              type="number"
               fullWidth
             />
                      <TextField
             required
             margin="dense"
-            name="postcode"
-            value={customer.postcode}
+            name="customer"
+            value={props.trainingid} // This is the customer id for developer only do not change
             onChange={e => handleInputChange(e)}
-            label="postcode"
-            fullWidth
-            />
-            <TextField
-            required
-            margin="dense"
-            name="city"
-            value={customer.city}
-            onChange={e => handleInputChange(e)}
-            label="city"
-            fullWidth
-            />
-            <TextField
-            required
-            margin="dense"
-            name="email"
-           value={customer.email}
-            onChange={e => handleInputChange(e)}
-            label="email"
-            fullWidth
-            />
-        <TextField
-            required
-            margin="dense"
-            name="phone"
-           value={customer.phone}
-            onChange={e => handleInputChange(e)}
-            label="phone"
+            label="add training to this customer id do not touch this field dev only"
             fullWidth
             />
             </DialogContent>
@@ -115,7 +113,7 @@ export default function AddCustomer(props) {
             <Button onClick={handleClose} color="primary">
                 Cancel
             </Button>
-            <Button onClick={addCustomer} color="primary">
+            <Button onClick={addTraining} color="primary">
                 Save
             </Button>
           </DialogActions>
