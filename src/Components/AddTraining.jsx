@@ -12,7 +12,7 @@ export default function AddTraining(props) {
 
     const [open, setOpen] = React.useState(false); // State variable for opening and closing the dialog
     const [training, setTraining] = React.useState({ // State variable for holding the customer data
-        date: '', activity: '', duration: '', customer: ''
+        date: '', activity: '', duration: '', customer: '',
     });
 
     const handleClickOpen = () => { // Function to open the dialog
@@ -105,6 +105,7 @@ export default function AddTraining(props) {
             margin="dense"
             name="customer"
             value={props.training._links.customer.href} // This is the customer id for developer only do not change
+            type="id"
             onChange={e => handleInputChange(e)}
             label="add training to this customer id do not touch this field dev only"
             fullWidth
