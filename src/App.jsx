@@ -1,7 +1,6 @@
 
 import React from 'react'
 import './App.css'
-import CustomerList from './Components/CustomerList'
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar } from '@mui/material';
@@ -20,7 +19,7 @@ function App() {
       <nav>
         <Link to={"/"}>Customers</Link>
         <Link to={"/TrainingList"}>Training</Link>
-        <Link to={"/contact"}>Calendar</Link>
+        <Link to={"/ShowCalendar"}>Calendar</Link>
       </nav>
      
     </div>

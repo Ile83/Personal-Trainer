@@ -9,6 +9,8 @@ import Contact from './Contact.jsx';
 import { RouterProvider } from 'react-router-dom';
 import CustomerList from './Components/CustomerList.jsx';
 import TrainingList from './Components/TrainingList.jsx';
+import ShowCalendar from './ShowCalendar.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -26,8 +28,8 @@ const router = createBrowserRouter([
         element: <TrainingList />,
       },
       {
-        path: "Contact",
-        element: <Contact />,
+        path: "ShowCalendar",
+        element: <ShowCalendar />,
       },
     ]
   }

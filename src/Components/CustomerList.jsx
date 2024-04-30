@@ -7,6 +7,8 @@ import { Button } from "@mui/material";
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTraining from './AddTraining';
+import DownloadCSV from './DownloadCSV';
+
 
 
 export default function CustomerList() {
@@ -76,8 +78,6 @@ export default function CustomerList() {
     }
 
 
-
-
     const [columnDefs, setColumnDefs] = useState([ // Column definitions for the grid
         {field: 'firstname', filter: true},
         {field: 'lastname', filter: true},
@@ -100,7 +100,12 @@ export default function CustomerList() {
     {field: '_links.self.href', sortable: false, filter: false,
     headerName: 'Add Training',
     cellRenderer: ({ data }) => <AddTraining training={data} saveTraining={saveTraining}/>
-   },
+   }//,
+  // {field: 'Download CSV', sortable: false, filter: false,
+  // cellRenderer: ({ data }) => <DownloadCSV data={data} fileName="customers"/>
+ // },
+
+
       ]);
 
      
@@ -109,6 +114,7 @@ export default function CustomerList() {
     return (
 
     <div className="ag-theme-material" style={{width: 1400, height: 800}}>
+        <DownloadCSV data={customers} fileName="customers"/>
         <AddCustomer saveCustomer={saveCustomer} />
         <AgGridReact 
         rowData={customers}
