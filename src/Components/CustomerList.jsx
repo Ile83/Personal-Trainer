@@ -93,13 +93,13 @@ export default function CustomerList() {
         headerName: '',
        cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>
     },
-    {field: '_links.trainings.href', sortable: false, filter: false,
-    headerName: 'Customers Trainings',
-    cellRenderer: ({ value }) => <Button color="primary" size="small" onClick={() => console.log(value)}>Trainings</Button>
-    },
+   // {field: '_links.trainings.href', sortable: false, filter: false,
+   // headerName: 'Customers Trainings',
+   // cellRenderer: ({ value }) => <Button color="primary" size="small" onClick={() => console.log(value)}>Trainings</Button>
+   // },
     {field: '_links.self.href', sortable: false, filter: false,
     headerName: 'Add Training',
-    cellRenderer: ({ data }) => <AddTraining training={data} saveTraining={saveTraining} />
+    cellRenderer: ({ data }) => <AddTraining training={data} saveTraining={saveTraining}/>
    },
       ]);
 

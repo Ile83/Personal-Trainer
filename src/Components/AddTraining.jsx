@@ -29,7 +29,7 @@ export default function AddTraining(props) {
     }
 
     const addTraining = () => { // Function to add a new customer
-        props.saveTraining({...training, customer: props.training._links.customer.href})
+        props.saveTraining({...training, customer: props.training._links.customer.href}) //Mietityttää tämä rivi, customer kenttä oli jo training objektissa, miksi se pitää erikseen lisätä?
         console.log(training) // This is for developer only
         handleClose();
     }
@@ -38,7 +38,7 @@ export default function AddTraining(props) {
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-        <Button style= {{margin: 10}} variant="outlined" color="primary" onClick={handleClickOpen}> 
+        <Button color="primary" size="small" onClick={handleClickOpen}> 
           Add Traingin to customer
         </Button>
         <Dialog

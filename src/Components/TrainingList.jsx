@@ -34,7 +34,7 @@ export default function TrainingList() {
         method: 'DELETE'
 
     }
-        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/' + href, options)
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/' + href, options) // Fetch data from the REST API with ID + options (delete)
         .then(() => fetchData())
         .catch(error => console.error(error))
         
