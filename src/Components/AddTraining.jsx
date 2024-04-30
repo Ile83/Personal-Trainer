@@ -29,7 +29,7 @@ export default function AddTraining(props) {
     }
 
     const addTraining = () => { // Function to add a new customer
-        props.saveTraining(training)
+        props.saveTraining({...training, customer: props.training._links.customer.href})
         console.log(training) // This is for developer only
         handleClose();
     }
@@ -105,7 +105,6 @@ export default function AddTraining(props) {
             margin="dense"
             name="customer"
             value={props.training._links.customer.href} // This is the customer id for developer only do not change
-            type="id"
             onChange={e => handleInputChange(e)}
             label="add training to this customer id do not touch this field dev only"
             fullWidth

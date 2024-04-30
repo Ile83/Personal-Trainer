@@ -1,6 +1,7 @@
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
+import { Button } from "@mui/material";
 
 import React, { useState, useEffect } from "react";
 import dayjs from 'dayjs';
@@ -33,7 +34,7 @@ export default function TrainingList() {
         method: 'DELETE'
 
     }
-        fetch(href, options)
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/' + href, options)
         .then(() => fetchData())
         .catch(error => console.error(error))
         
@@ -68,12 +69,16 @@ export default function TrainingList() {
     */
 
     const [columnDefs, setColumnDefs] = useState([ // Column definitions for the grid
-        {field: 'id', filter: true},
+    {field: 'id', sortable: false, filter: false, 
+    headerName: '',
+   cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteTrainings(value)}>Delete</Button>
+},
         {field: 'date', filter: true},
         {field: 'duration', filter: true},
         {field: 'activity', filter: true},
         {field: 'customer.firstname', filter: true},
         {field: 'customer.lastname', filter: true}
+       
  //       {field: 'edit', sortable: false, filter: false,
   //  cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
   //  },
