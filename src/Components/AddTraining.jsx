@@ -5,6 +5,7 @@ import { Dialog } from "@mui/material";
 import { DialogActions } from "@mui/material";
 import { DialogContent } from "@mui/material";
 import { DialogTitle } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 
 
 
@@ -38,9 +39,7 @@ export default function AddTraining(props) {
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-        <Button color="primary" size="small" onClick={handleClickOpen}> 
-          Add Traingin to customer
-        </Button>
+        <AddIcon onClick={handleClickOpen}/>
         <Dialog
             open={open}
             onClose={handleClose}

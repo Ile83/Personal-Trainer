@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter } from 'react-router-dom';
-import Home from './Home.jsx';
-import About from './About.jsx';
-import Contact from './Contact.jsx';
 import { RouterProvider } from 'react-router-dom';
 import CustomerList from './Components/CustomerList.jsx';
 import TrainingList from './Components/TrainingList.jsx';
 import ShowCalendar from './ShowCalendar.jsx';
+import allEvents from './Components/TrainingList.jsx'
 
 
 
@@ -29,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "ShowCalendar",
-        element: <ShowCalendar />,
+        element: <ShowCalendar events={allEvents} />,
       },
     ]
   }

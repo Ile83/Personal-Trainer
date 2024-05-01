@@ -33,7 +33,7 @@ export default function AddCustomer(props) {
         handleClose();
     }
 
-
+          //alaosa div style center ei toimi
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
         <Button style= {{margin: 10}} variant="outlined" color="primary" onClick={handleClickOpen}> 

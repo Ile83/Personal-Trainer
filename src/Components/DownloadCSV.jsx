@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button } from '@mui/material';
-import fetchData from '../Components/CustomerList';
+
 
 
 
@@ -42,7 +42,7 @@ const DownloadCSV = ({ data, fileName }) => {
 
 
   return (
-    <Button onClick={downloadCSV}>Download Customer Data</Button>
+    <Button style= {{margin: 10}} variant="outlined" color="primary" onClick={downloadCSV}>Download Customer Data</Button>
   );
 }
 

@@ -1,6 +1,7 @@
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-//import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
+import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
+
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
@@ -8,6 +9,9 @@ import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTraining from './AddTraining';
 import DownloadCSV from './DownloadCSV';
+import DeleteIcon from '@mui/icons-material/Delete'
+
+
 
 
 
@@ -28,7 +32,7 @@ export default function CustomerList() {
 
 
     const deleteCustomer = href => { // Function to delete a customer
-        if (window.confirm('Are you sure?')) {
+        if (window.confirm('Are you sure you want to delete a customer?')) {
     const options = {
         method: 'DELETE'
 
@@ -79,26 +83,26 @@ export default function CustomerList() {
 
 
     const [columnDefs, setColumnDefs] = useState([ // Column definitions for the grid
-        {field: 'firstname', filter: true},
-        {field: 'lastname', filter: true},
-        {field: 'streetaddress', filter: true},
-        {field: 'postcode', filter: true},
-        {field: 'city', filter: true},
-        {field: 'email', filter: true},
-        {field: 'phone', filter: true},
-     {field: 'edit', sortable: false, filter: false,
+        {field: 'firstname', filter: true, width: 150},
+        {field: 'lastname', filter: true, width: 150},
+        {field: 'streetaddress', filter: true, width: 200},
+        {field: 'postcode', filter: true, width: 120},
+        {field: 'city', filter: true, width: 150},
+        {field: 'email', filter: true, width: 200},
+        {field: 'phone', filter: true, width: 150},
+     {field: 'edit', sortable: false, filter: false, width: 80,
    cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
   },
       {field: '_links.self.href', sortable: false, filter: false, 
-        headerName: '',
-       cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>
+        headerName: 'Delete', width: 100,
+       cellRenderer: ({ value }) => <DeleteIcon onClick={() => deleteCustomer(value)} />
     },
    // {field: '_links.trainings.href', sortable: false, filter: false,
    // headerName: 'Customers Trainings',
    // cellRenderer: ({ value }) => <Button color="primary" size="small" onClick={() => console.log(value)}>Trainings</Button>
    // },
     {field: '_links.self.href', sortable: false, filter: false,
-    headerName: 'Add Training',
+    headerName: 'Add Training', width: 120,
     cellRenderer: ({ data }) => <AddTraining training={data} saveTraining={saveTraining}/>
    }//,
   // {field: 'Download CSV', sortable: false, filter: false,
@@ -113,7 +117,7 @@ export default function CustomerList() {
 
     return (
 
-    <div className="ag-theme-material" style={{width: 1400, height: 800}}>
+    <div className="ag-theme-material" style={{width: 1450, height: 800, float: 'left'}}>
         <DownloadCSV data={customers} fileName="customers"/>
         <AddCustomer saveCustomer={saveCustomer} />
         <AgGridReact 

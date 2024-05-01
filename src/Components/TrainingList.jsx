@@ -2,6 +2,7 @@ import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
 import { Button } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete'
 
 import React, { useState, useEffect } from "react";
 import dayjs from 'dayjs';
@@ -11,10 +12,11 @@ import dayjs from 'dayjs';
 export default function TrainingList() {
 
     const [trainings, setTrainings] = useState([]); // State variable for holding customers
-   // const dayjs = require('dayjs');
+    /*const [newEvent, setNewEvent] = useState({title: "", start: "", end: ""}) // State variable for holding the new event
+    const [allEvents, setAllEvents] = useState(events) // State variable for holding all events
+*/
 
-
-    useEffect(() => fetchData(), []);
+    useEffect(() => fetchData(), []); //, showTrainings(), []); // Lisätty showTrainings() funktio, joka hakee treenit ja tallentaa ne allEvents muuttujaan
 
     const fetchData = () => {
 
@@ -25,11 +27,22 @@ export default function TrainingList() {
         .catch(error => console.error(error))
         
     }
-    
+
+
+   /* const showTrainings = () => { // Function to show trainings. Doesn't work
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings') // Fetch data from the REST API
+        .then(response => response.json())    
+        .then(data => data.map((training) => ({title: training.activity, start: new Date(training.date), end: new Date(training.date)})))// this is to parse the data only containing start and end date and titlte to the format that the calendar can understand
+        console.log(data)
+        .then(data => setAllEvents(data))
+        .catch(error => console.error(error))
+    }
+
+    */
 
 
     const deleteTrainings = href => { // Function to delete a training
-        if (window.confirm('Are you sure?')) {
+        if (window.confirm('Are you sure you want to delete training?')) {
     const options = {
         method: 'DELETE'
 
@@ -69,15 +82,16 @@ export default function TrainingList() {
     */
 
     const [columnDefs, setColumnDefs] = useState([ // Column definitions for the grid
-    {field: 'id', sortable: false, filter: false, 
-    headerName: '',
-   cellRenderer: ({ value }) => <Button color="secondary" size="small" onClick={() => deleteTrainings(value)}>Delete</Button>
-},
+    
         {field: 'date', filter: true},
         {field: 'duration', filter: true},
         {field: 'activity', filter: true},
         {field: 'customer.firstname', filter: true},
-        {field: 'customer.lastname', filter: true}
+        {field: 'customer.lastname', filter: true},
+        {field: 'id', sortable: false, filter: false, 
+    headerName: 'Delete',
+   cellRenderer: ({ value }) => <DeleteIcon  onClick={() => deleteTrainings(value)} />
+}
        
  //       {field: 'edit', sortable: false, filter: false,
   //  cellRenderer: ({ data }) => <EditCustomer customer={data} updateCustomer={updateCustomer} />
