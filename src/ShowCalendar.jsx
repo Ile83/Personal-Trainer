@@ -2,14 +2,14 @@ import React from "react";
 import { Calendar, dayjsLocalizer } from 'react-big-calendar'
 import dayjs from 'dayjs'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import showTrainings from './Components/TrainingList.jsx';
+
 
 
 
 const localizer = dayjsLocalizer(dayjs)
 
 const events = ["test", "2024-04-04", "2024-04-05"] // This is just a test data, you can add your own data
-console.log(events);
+//console.log(events);
 
 const MyCalendar = (props) => (
   <div>

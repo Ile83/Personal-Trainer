@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import CustomerList from './Components/CustomerList.jsx';
 import TrainingList from './Components/TrainingList.jsx';
 import ShowCalendar from './ShowCalendar.jsx';
-import allEvents from './Components/TrainingList.jsx'
+// import allEvents from './Components/TrainingList.jsx' , does not work
 
 
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "ShowCalendar",
-        element: <ShowCalendar events={allEvents} />,
+        element: <ShowCalendar /> //events={allEvents} />, // pass the events to the calendar component, does not work
       },
     ]
   }
